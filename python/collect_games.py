@@ -82,9 +82,10 @@ for year in range(2018, 2003, -1):
 
         game_stats.loc[:, 'team_id'] = team_id
         game_stats.loc[:, 'team_name'] = team_name
-        try:
-            game_stats.to_sql('ncaa_game_info',
-                              create_engine(os.environ['DATABASE_URL']),
-                              index=False, if_exists='append')
-        except IntegrityError as e:
-            pass
+        print "Number of records collected {}\n".format(len(game_stats))
+        # try:
+        game_stats.to_sql('ncaa_game_info',
+                          create_engine(os.environ['DATABASE_URL']),
+                          index=False, if_exists='append')
+        # except IntegrityError as e:
+        #     pass
