@@ -56,17 +56,16 @@ for year in range(2019, 2003, -1):
                     try:
                         ## set vars
                         td_list = tr.findAll('td')
-                        team_id = td_list[1].find('a').get('href').split('/id/')[1].split('/')[0]
-                        team_name = td_list[1].find('a').get('href').split('{}/'.format(team_id))[1].replace('-', ' ').title()
+                        opposing_team_id = td_list[1].find('a').get('href').split('/id/')[1].split('/')[0]
+                        opposing_team_name = td_list[1].find('a').get('href').split('{}/'.format(team_id))[1].replace('-', ' ').title()
                         link = td_list[2].find('a').get('href')
-                        score = td_list[2].find('a').text.replace(' 1OT', ' OT').replace(' 2OT', ' OT').replace(' 3OT', ' OT').replace(' 4OT', ' OT')
 
                         ## insert data
                         game_stats.loc[index_, 'date'] = pd.to_datetime('{}, {}'.format(td_list[0].text.split(', ')[1], year), infer_datetime_format=True)
                         game_stats.loc[index_, 'home'] = '@' not in td_list[1].find('span', {'class':'pr2'}).text
 
-                        game_stats.loc[index_, 'opposing_id'] = team_id
-                        game_stats.loc[index_, 'opposing_team'] = team_name
+                        game_stats.loc[index_, 'opposing_id'] = opposing_team_id
+                        game_stats.loc[index_, 'opposing_team'] = opposing_team_name
                         game_stats.loc[index_, 'result'] = td_list[2].find('span').text
                         game_stats.loc[index_, 'score'] = score.replace(' OT', '')
                         game_stats.loc[index_, 'ot'] = ' OT' in score
@@ -77,7 +76,7 @@ for year in range(2019, 2003, -1):
                         pass
             except:
                 count += 1
-                if count >= 5:
+                if count >= 10:
                     collected = True
 
         game_stats.loc[:, 'team_id'] = team_id
