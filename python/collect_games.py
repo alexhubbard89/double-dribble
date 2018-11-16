@@ -71,11 +71,8 @@ for year in range(2018, 2003, -1):
                         game_stats.loc[index_, 'result'] = td_list[2].find('span').text
                         game_stats.loc[index_, 'score'] = score.replace(' OT', '')
                         game_stats.loc[index_, 'ot'] = ' OT' in score
-                        game_stats.loc[index_, 'game_link'] =game_link
+                        game_stats.loc[index_, 'game_link'] = game_link
                         game_stats.loc[index_, 'game_id'] = game_id
-                        game_stats.loc[index_, 'team_id'] = team_id
-                        game_stats.loc[index_, 'team_name'] = team_name
-                        game_stats.loc[index_, 'season'] = year
                     except:
                         pass
 
@@ -85,6 +82,8 @@ for year in range(2018, 2003, -1):
                 if count >= 10:
                     collected = True
 
+        game_stats.loc[:, 'team_id'] = team_id
+        game_stats.loc[:, 'team_name'] = team_name
         print "Number of records collected {}\n".format(len(game_stats))
         try:
             game_stats.to_sql('ncaa_game_info',
