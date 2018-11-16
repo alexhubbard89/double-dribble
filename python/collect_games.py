@@ -51,12 +51,12 @@ for year in range(2018, 2003, -1):
                 collected = True
 
                 tbody = page.find('tbody', {'class':'Table2__tbody'})
-                print tbody
                 for tr in tbody.findAll('tr'):
                     index_ = len(game_stats)
 
                     ## set vars
                     td_list = tr.findAll('td')
+                    print td_list
                     opposing_team_id = td_list[1].find('a').get('href').split('/id/')[1].split('/')[0]
                     opposing_team_name = td_list[1].find('a').get('href').split('{}/'.format(team_id))[1].replace('-', ' ').title()
                     link = td_list[2].find('a').get('href')
