@@ -15,10 +15,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import IntegrityError
 import imp
 try:
-    ip_spoofer = imp.load_source('module', './python/ip_spoofer.py')
+    ip_spoofer = imp.load_source('module', './python/IpSpoofer.py')
 except:
     # # For testing
-    ip_spoofer = imp.load_source('module', '../python/ip_spoofer.py')
+    ip_spoofer = imp.load_source('module', '../python/IpSpoofer.py')
 
 def open_connection():
     url = urlparse.urlparse(os.environ["DATABASE_URL"])
