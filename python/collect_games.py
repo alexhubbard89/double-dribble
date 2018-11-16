@@ -34,7 +34,7 @@ def open_connection():
 teams_df = pd.read_sql_query("select * from ncaa_teams", open_connection())
 
 
-for year in range(2019, 2003, -1):
+for year in range(2018, 2003, -1):
     print year
     for i in teams_df.index:
         team_id = teams_df.loc[i, 'team_id']
