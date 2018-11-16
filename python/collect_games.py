@@ -40,8 +40,10 @@ for year in range(2018, 2003, -1):
         team_id = teams_df.loc[i, 'team_id']
         team_name = teams_df.loc[i, 'team_name']
         url = 'http://www.espn.com/mens-college-basketball/team/schedule/_/id/{}/season/{}'.format(team_id, year)
-        game_stats = pd.DataFrame(columns=['team_id', 'team_name', 'date', 'home', 'opposing_id',
-                                           'opposing_team', 'result', 'score', 'ot', 'game_link', 'game_id'])
+        game_stats = pd.DataFrame(columns=['team_id', 'team_name', 'date', 'home',
+                                            'opposing_id', 'opposing_team',
+                                            'result', 'score', 'ot', 'game_link',
+                                             'game_id', 'season'])
 
         collected = False
         count = 0
@@ -84,6 +86,7 @@ for year in range(2018, 2003, -1):
 
         game_stats.loc[:, 'team_id'] = team_id
         game_stats.loc[:, 'team_name'] = team_name
+        game_stats.loc[:, 'season'] = year
         print "Number of records collected {}\n".format(len(game_stats))
         try:
             game_stats.to_sql('ncaa_game_info',
