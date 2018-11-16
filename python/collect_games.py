@@ -38,6 +38,7 @@ for year in range(2019, 2003, -1):
     print year
     for i in teams_df.index:
         team_id = teams_df.loc[i, 'team_id']
+        team_name = teams_df.loc[i, 'team_name']
         url = 'http://www.espn.com/mens-college-basketball/team/schedule/_/id/{}/season/{}'.format(team_id, year)
         game_stats = pd.DataFrame(columns=['team_id', 'team_name', 'date', 'home', 'opposing_id',
                                            'opposing_team', 'result', 'score', 'ot', 'game_link', 'game_id'])
@@ -46,7 +47,7 @@ for year in range(2019, 2003, -1):
         count = 0
         while collected == False:
             try:
-                page = IpSpoofer.request_page(url)
+                page = ip_spoofer.IpSpoofer.request_page(url)
                 collected = True
 
                 tbody = page.find('tbody', {'class':'Table2__tbody'})
