@@ -1,7 +1,6 @@
 # ----------------------
 # Production Server
 # ----------------------
-BeautifulSoup==3.2.1
 beautifulsoup4==4.4.1
 bs4
 fake_useragent==0.1.8
