@@ -62,6 +62,8 @@ for year in range(2018, 2003, -1):
                         opposing_team_name = td_list[1].find('a').get('href').split('{}/'.format(team_id))[1].replace('-', ' ').title()
                         link = td_list[2].find('a').get('href')
 
+                        print td_list
+
                         ## insert data
                         game_stats.loc[index_, 'date'] = pd.to_datetime('{}, {}'.format(td_list[0].text.split(', ')[1], year), infer_datetime_format=True)
                         game_stats.loc[index_, 'home'] = '@' not in td_list[1].find('span', {'class':'pr2'}).text
