@@ -31,7 +31,7 @@ def open_connection():
         )
     return connection
 
-team_id = pd.read_sql_query("select * from ncaa_teams", open_connection())
+teams_df = pd.read_sql_query("select * from ncaa_teams", open_connection())
 
 
 for year in range(2019, 2003, -1):
