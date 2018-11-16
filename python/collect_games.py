@@ -49,6 +49,7 @@ for year in range(2018, 2003, -1):
             try:
                 page = ip_spoofer.IpSpoofer.request_page(url)
                 collected = True
+                print page
 
                 tbody = page.find('tbody', {'class':'Table2__tbody'})
                 for tr in tbody.findAll('tr'):
