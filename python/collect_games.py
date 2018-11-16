@@ -18,7 +18,7 @@ try:
     ip_spoofer = imp.load_source('module', './python/ip_spoofer.py')
 except:
     # # For testing
-ip_spoofer = imp.load_source('module', '../python/ip_spoofer.py')
+    ip_spoofer = imp.load_source('module', '../python/ip_spoofer.py')
 
 def open_connection():
     url = urlparse.urlparse(os.environ["DATABASE_URL"])
