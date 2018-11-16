@@ -58,11 +58,9 @@ for year in range(2018, 2003, -1):
                     try:
                         ## set vars
                         td_list = tr.findAll('td')
-                        print td_list[1]
-                        print td_list[2]
 
                         opposing_team_id = td_list[1].find('a').get('href').split('/id/')[1].split('/')[0]
-                        opposing_team_name = td_list[1].find('a').get('href').split('{}/'.format(team_id))[1].replace('-', ' ').title()
+                        opposing_team_name = td_list[1].find('a').get('href').split('{}/'.format(opposing_team_id))[1].replace('-', ' ').title()
                         link = td_list[2].find('a').get('href')
 
                         ## insert data
