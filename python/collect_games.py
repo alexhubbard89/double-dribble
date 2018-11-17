@@ -35,7 +35,7 @@ def open_connection():
 teams_df = pd.read_sql_query("select * from ncaa_teams", open_connection())
 
 
-for year in range(2018, 2003, -1):
+for year in range(2017, 2003, -1):
     print year
     conintue_collecting = True
     while conintue_collecting == True:
